@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+	.button {
+      border: none;
+      background: #F6C900;
+      padding: 16px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border-radius: 41px;
+      max-width: 26.9375rem;
+      width: 100%;
+      max-height: 5.125rem;
+      height: 100%;
+  	} 
+	  .button:focus {
+        border-radius: 1px;
+        background-color: #F6C9004D;
+      }
+      
+      .button__background {
+        background-color: #FFE155;
+      }
+  
+      .button__progress {
+      position: absolute;
+      height: 10%;
+      width: 0%;
+      top: 0;
+      left: 0;
+      background: #F6C900;
+      transition: width 0.3s;
+      border-radius: 0 5px 5px 0;
+      }
+    
+      .button__text {
+      position: relative;
+      font-weight: bolder;
+      font-size: 1.75rem;
+      color: #000;
+    }
+	</style>
+</head>
+<body>
+	<button type="submit" class="button" data-progress-text="Creating..." data-complete-text="Completed">
+		<div class="button__background">
+			<div class="button__progress"></div>
+		</div>
+		<span class="button__text">Login</span>
+	</button>
+
+	<script>
+        const btnUploadFile = document.querySelector(".button");
+
+        function setButtonProgress(button, percent)
+        {
+            const textElement = button.querySelector(".button__text");
+
+            button.querySelector(".button__progress").style.width = `${percent}%`;
+
+            if (percent >= 0) {
+                textElement.textContent = button.dataset.progressText;
+            }
+
+            if (percent >= 100) {
+                textElement.textContent = button.dataset.completeText;
+            }
+        }
+
+    </script>
+
+</body>
+</html>
